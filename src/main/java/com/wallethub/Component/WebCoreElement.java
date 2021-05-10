@@ -1,15 +1,13 @@
 package com.wallethub.Component;
 
 import com.wallethub.PageObject.BasePage;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.concurrent.TimeUnit;
 
 public class WebCoreElement {
 
@@ -44,8 +42,6 @@ public class WebCoreElement {
     public WebElement waitAndFindElement(By locator) {
 
         return new WebDriverWait(webDriver, 30).until(ExpectedConditions.visibilityOfElementLocated(locator));
-       // return new FluentWait<WebDriver>(webDriver).withTimeout(140, TimeUnit.SECONDS).pollingEvery(5, TimeUnit.SECONDS)
-              //  .ignoring(NoSuchElementException.class).until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public void waitForElementToBeClickable(By locator) {
@@ -55,21 +51,6 @@ public class WebCoreElement {
 
     public void doClick(By locator) {
         webDriver.findElement(locator).click();
-    }
-
-
-    public boolean isAlertPresent() {
-
-        try {
-            webDriver.switchTo().alert().accept();
-            return true;
-        } catch (NoAlertPresentException ex) {
-            return false;
-        }
-    }
-
-    public void switchToActiveframe() {
-        webDriver.switchTo().frame(1);
     }
 
     public void hoverAndClick(By locator) {

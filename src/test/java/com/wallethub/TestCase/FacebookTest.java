@@ -2,8 +2,6 @@ package com.wallethub.TestCase;
 
 import com.wallethub.PageObject.FacebookHomePage;
 import com.wallethub.TestConfig.BaseTest;
-import org.testng.Assert;
-import org.testng.SuiteRunner;
 import org.testng.annotations.Test;
 
 public class FacebookTest extends BaseTest {
@@ -19,8 +17,6 @@ public class FacebookTest extends BaseTest {
         goToUrl(URL);
         webCoreElement.getInstance(FacebookHomePage.class).login(LOGIN_USERNAME, LOGIN_PASSWORD);
         webCoreElement.getInstance(FacebookHomePage.class).postStatusMessage(STATUS_MESSAGE);
-        boolean postMessageDisplayed = webCoreElement.getInstance(FacebookHomePage.class).isPostMessageDisplayed(STATUS_MESSAGE);
-        Assert.assertTrue(postMessageDisplayed);
 
     }
 }

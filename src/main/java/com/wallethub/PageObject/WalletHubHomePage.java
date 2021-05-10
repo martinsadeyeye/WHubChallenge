@@ -21,7 +21,9 @@ public class WalletHubHomePage extends BasePage {
 
     By policyDropdown = By.xpath("//span[contains(text(),'Select...')]");
     By writeReviewMessageField = By.xpath("//textarea[@placeholder=\"Write your review...\"]");
-    By submitReview = By.xpath("//div[contains(text(),'Submit')]");
+    By submitReview = By.xpath("//div[(text()='Submit')]");
+
+            //By.xpath("//div[contains(text(),'Submit')]");
     By successResponseField = By.xpath("//h4[contains(text(),'Your review has been posted.')]");
     By continueButton = By.xpath("//div[contains(text(),'Continue')]");
 
@@ -38,9 +40,8 @@ public class WalletHubHomePage extends BasePage {
 
     public void writeReview(String review) {
         findElement(writeReviewMessageField).sendKeys(review);
-        doClick(submitReview);
+        waitForElementToBeClickable(submitReview);
     }
-
 
     private By getPostedMessage(String message) {
         return By.xpath("//div[contains(text(),'" + message + "')]");
@@ -62,7 +63,7 @@ public class WalletHubHomePage extends BasePage {
 
     }
 
-    public void movetoReviewpage(){
+    public void movetoReviewPage(){
 
         doClick(continueButton);
     }

@@ -1,11 +1,10 @@
 package com.wallethub.TestCase;
 
-import com.wallethub.PageObject.FacebookHomePage;
 import com.wallethub.PageObject.WalletHubHomePage;
 import com.wallethub.TestConfig.BaseTest;
+import com.wallethub.Utilities.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import com.wallethub.Utilities.Utils;
 
 public class WalletHubTest extends BaseTest {
 
@@ -23,9 +22,9 @@ public class WalletHubTest extends BaseTest {
         webCoreElement.getInstance(WalletHubHomePage.class).writeReview(Utils.randomCharacter(NUMBER_OF_CHARACTER));
         String actualMessage = webCoreElement.getInstance(WalletHubHomePage.class).successResponseMessage();
         Assert.assertEquals(actualMessage, RESPONSE_MESSAGE);
-        webCoreElement.getInstance(WalletHubHomePage.class).movetoReviewpage();
-       // Boolean postMessageDisplayed = webCoreElement.getInstance(WalletHubHomePage.class).isPostMessageDisplayed(Utils.randomCharacter(NUMBER_OF_CHARACTER));
-       // Assert.assertTrue(postMessageDisplayed);
+        webCoreElement.getInstance(WalletHubHomePage.class).movetoReviewPage();
+       Boolean postMessageDisplayed = webCoreElement.getInstance(WalletHubHomePage.class).isPostMessageDisplayed(Utils.randomCharacter(NUMBER_OF_CHARACTER));
+        Assert.assertTrue(postMessageDisplayed);
 
 
     }
